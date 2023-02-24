@@ -1,29 +1,29 @@
-import {Table, Column, Model, DataType} from 'sequelize-typescript';
+import {DataType} from "sequelize-typescript";
 
-interface PageCreationAttrs {
-    title: string;
-    description: string;
-    content: string;
-    urlSlug: string;
+const PageModel = (sequelize: any) => {
+    const Page = sequelize.define('Page', {
+        id: {
+            primaryKey: true,
+            type: DataType.INTEGER,
+            autoIncrement: true,
+            unique: true
+        },
+        title: {
+            type: DataType.STRING
+        },
+        description: {
+            type: DataType.STRING
+        },
+        content: {
+            type: DataType.STRING(3000)
+        },
+        urlSlug: {
+            type: DataType.STRING,
+            unique: true
+        },
+    });
+
+    return Page;
 }
 
-@Table({
-    timestamps: false,
-    tableName: "pages"
-})
-export class Page extends Model<Page, PageCreationAttrs> {
-    @Column({ type: DataType.INTEGER, autoIncrement: true, primaryKey: true, unique: true})
-    id!: number;
-
-    @Column({ type: DataType.STRING })
-    title!: string;
-
-    @Column({ type: DataType.STRING })
-    description!: string;
-
-    @Column({ type: DataType.STRING(3000) })
-    content!: string;
-
-    @Column({ type: DataType.STRING, unique: true })
-    urlSlug!: string;
-}
+export default PageModel;

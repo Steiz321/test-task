@@ -4,14 +4,14 @@ import bodyParser, {urlencoded} from 'body-parser';
 import cors from 'cors';
 import config from "./config";
 import AppRouter from "./routes"
-import connection from "./config/database";
+import {sequelize} from "./config/database";
 import cookieParser from 'cookie-parser';
 import {errorMiddleware} from "./middlewares/error-handler";
 
 const app = express();
 const router = new AppRouter(app);
 
-connection.sync().then(() => {
+sequelize.sync().then(() => {
     console.log("DB connected!")
 }).catch((err) => {
     console.log(err);

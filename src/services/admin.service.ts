@@ -1,5 +1,5 @@
 import {IPage} from "../types/IPage";
-import { Page } from '../models/Page';
+import { Page } from '../config/database';
 import {createPageFile, removePageFile} from "../extensions/File-Manipulator";
 import {ApiError} from "../extensions/Api-Error";
 
