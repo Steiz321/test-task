@@ -1,24 +1,24 @@
-import {DataType} from "sequelize-typescript";
+import {DataTypes} from "sequelize";
 
 const PageModel = (sequelize: any) => {
     const Page = sequelize.define('Page', {
         id: {
             primaryKey: true,
-            type: DataType.INTEGER,
+            type: DataTypes.INTEGER,
             autoIncrement: true,
             unique: true
         },
         title: {
-            type: DataType.STRING
+            type: DataTypes.STRING
         },
         description: {
-            type: DataType.STRING
+            type: DataTypes.STRING
         },
         content: {
-            type: DataType.STRING(3000)
+            type: DataTypes.STRING(3000)
         },
         urlSlug: {
-            type: DataType.STRING,
+            type: DataTypes.STRING,
             unique: true
         },
     });
