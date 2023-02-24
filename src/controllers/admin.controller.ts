@@ -11,7 +11,7 @@ class AdminController {
 
     async getAdminPage(req: TypedReqBody<void>, res: Response, next: NextFunction) {
         try {
-            return res.sendFile(path.resolve('src/page/mainPages/adminPage.html'));
+            return res.sendFile(path.resolve('page/mainPages/adminPage.html'));
         } catch (err) {
             next(err);
         }
@@ -28,7 +28,7 @@ class AdminController {
 
     async getCreatePage(req: TypedReqBody<void>, res: Response, next: NextFunction) {
         try {
-            return res.sendFile(path.resolve('src/page/mainPages/createPage.html'));
+            return res.sendFile(path.resolve('page/mainPages/createPage.html'));
         } catch (err) {
             next(err);
         }

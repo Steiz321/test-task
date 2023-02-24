@@ -9,7 +9,7 @@ import {ApiError} from "../extensions/Api-Error";
 class PageController {
     async getHomePage(req: TypedReqBody<void>, res: Response, next: NextFunction) {
         try {
-            return res.sendFile(path.resolve('src/page/mainPages/index.html'));
+            return res.sendFile(path.resolve('page/mainPages/index.html'));
         } catch (err) {
             next(err);
         }
@@ -17,7 +17,7 @@ class PageController {
 
     async getLoginPage(req: TypedReqBody<void>, res: Response, next: NextFunction) {
         try {
-            return res.sendFile(path.resolve('src/page/mainPages/loginPage.html'));
+            return res.sendFile(path.resolve('page/mainPages/loginPage.html'));
         } catch (err) {
             next(err);
         }
@@ -26,7 +26,7 @@ class PageController {
     async getPageBySlug(req: TypedReqBody<void>, res: Response, next: NextFunction) {
         try {
             const slug = req.params.urlSlug;
-            return res.sendFile(path.resolve(`src/page/${slug}.html`))
+            return res.sendFile(path.resolve(`page/${slug}.html`))
         } catch (err) {
             next(err);
         }
