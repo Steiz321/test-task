@@ -17,7 +17,7 @@ sequelize.sync().then(() => {
     console.log(err);
 })
 
-const PORT = config.server.port;
+const PORT = process.env.PORT;
 
 app.use(bodyParser.json());
 app.use(cors());
