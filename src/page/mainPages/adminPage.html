@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin</title>
+
+    <style>
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <a href="/">Home</a>
+    <br />
+    <br />
+    <br />
+    <a href="/admin/create">Create new page</a>
+
+    <h1>Pages manager</h1>
+    <ul id="list"></ul>
+</body>
+<script>
+    async function deleteReq(urlSlug) {
+        console.log(urlSlug)
+        return fetch(`./admin/${urlSlug}`, {
+            method: 'DELETE',
+        }).then(res => res.json()).then(res => {
+            alert('Page has been deleted! Your page will be refreshed!');
+            document.location.reload();
+        });
+    }
+
+    const createList = async () => {
+        const data = await fetch('./admin/pages').then(response => response.json());
+
+        const list = document.querySelector('#list');
+        data.map(el => {
+            let newLi = document.createElement('li');
+            newLi.innerHTML = `id: ${el.id} || title: ${el.title} || description: ${el.description} || urlSlug: ${el.urlSlug} || <a href="./${el.urlSlug}">Click to check</a>  || <button onclick="deleteReq('${el.urlSlug}')">delete</button>`
+            list.appendChild(newLi);
+        })
+    }
+
+    createList();
+
+</script>
+</html>
