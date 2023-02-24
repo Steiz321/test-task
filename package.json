@@ -8,7 +8,7 @@
     "watch-tsc": "tsc -w",
     "watch-deploy": "nodemon dist/index.js",
     "dev": "tsc -w & nodemon index.ts",
-    "build": "tsc",
+    "build": "npm install && tsc",
     "start": "node ./dist/index.js"
   },
   "author": "",
